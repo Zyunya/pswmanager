@@ -1,0 +1,34 @@
+<div class='container'>
+    <div class='row text-center ' style='height:110px'>
+    </div>
+    <div class='row text-center '>
+        <div class='col-lg-6  ml-auto  mr-auto'>
+            <h1 class='Rancho display-1 Tilte'>Sign Up</h1>
+        </div>
+    </div>
+
+    <div class='row text-center'>
+        <div class='col-lg-6  ml-auto mr-auto '>
+            <form data-ng-submit="sign_up()">
+                <div class="form-group">
+                    <br>
+                    <input type="text" class="form-control swinp" name='login' placeholder="Enter Login">
+                </div>
+                <div class="form-group">
+                    <i data-ng-click='show_pass()' class='fa fa-eye fa-2x'></i>
+                    <input type="password" class="form-control swinp pass" name='pswrd' placeholder="Password">
+                    <br>
+                    <input type="password" class="form-control swinp pass" name='pswrdrp' placeholder="Repeat Password">
+                </div>
+                <div class="alert alert-danger hidden" role="alert">
+                    <output></output>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                <br><br>
+                <button data-ui-sref='home' type="submit" class="btn btn-dark w-100">Back</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+</div>

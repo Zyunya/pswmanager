@@ -1,0 +1,39 @@
+{
+  "name": "pswapp",
+  "version": "1.0.0",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {
+    "angular": "~1.6.1",
+    "angular-ui-router": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "bootstrap": "^4.0.0-alpha.5",
+    "connect-mongodb": "^1.1.5",
+    "express": "^4.15.4",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jwt-simple": "^0.5.1",
+    "less": "^2.7.2",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.7",
+    "sha1": "^1.1.1"
+  }
+}

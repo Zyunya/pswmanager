@@ -1,0 +1,58 @@
+<div class='container-fluid'>
+    <div class='row text-center '>
+        <div class='col-lg-6  ml-auto  mr-auto'>
+            <h1 class='Rancho display-1 Tilte'>PSW </h1>
+            <small class='Tilte'>Powered By AngularJs And Bootstrap 4</small>
+        </div>
+    </div>
+    <div class='row  text-center '>
+        <div class='col-lg-6 ml-auto mr-auto'>
+            <form data-ng-submit="add_app()">
+                <div class="form-group">
+                    <br>
+                    <input type="text" class="form-control swinp" name='name' placeholder="App Name">
+                </div>
+                <div class="form-group">
+                    <i data-ng-click='show_pass()' class='fa fa-eye fa-2x'></i>
+                    <input type="text" class="form-control swinp pass" name='login' placeholder="App Login">
+                    <br>
+                    <input type="password" class="form-control swinp pass" name='pswrd' placeholder="App Password">
+                </div>
+                <div class="alert alert-danger hidden" role="alert">
+                    <output></output>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Add</button>
+                <br>
+            </form>
+            <br>
+            <button data-ng-click='logout()' class="btn btn-dark w-100">Sign Out</button>
+            <output></output>
+        </div>
+    </div>
+    <hr>
+    <div class='row text-center'>
+        <div class='col-lg-6 ml-auto mr-auto'>
+            <div data-ng-repeat='app in apps' class="card border-primary mb-3">
+                <div class="card-header bg-transparent border-primary Tilte">Application Card</div>
+                <div class="card-body">
+                    <h4 class="card-title Tilte display-4">{{app.name}}</h4>
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden  alert_update_{{$index}}" role="alert">
+                        </div>
+                        <input type="text" class="form-control  pass swinp" name='updatelogin_{{$index}}' value='{{app.login}}' placeholder="App Login">
+                        <br>
+                        <input onFocus="this.type = 'text'" onBlur="this.type = 'password'" type="password" class="form-control  pass swinp" name='updatepswrd_{{$index}}'
+                            value='{{app.password}}' placeholder="App Password">
+                    </div>
+                    <small>Focus on password field in order to see password!</small>
+                    <hr>
+                    <button data-ng-click='update_app(app._id,$index)' class="btn btn-primary w-50">Update</button>
+                    <button data-ng-click='delete_app(app._id,$index)' class="btn btn-primary">Delete</button>
+                    <br><br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

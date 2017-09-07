@@ -1,0 +1,29 @@
+@font-face {font-family: 'Rancho' ;src: url('../assets/fonts/rancho.ttf'); }
+
+$clyg : yellowgreen;
+$clst : #ff5959;
+$cllg : #ccc;
+$cldg : #656565;
+$clbl : #0069d9;
+$brdr : 1px solid red;
+
+.Tilte { color  : $clbl}
+.brdr  { border : $brdr;}
+.Rancho{ font-family: Rancho;}
+
+.swinp{
+    cursor:pointer;
+    text-align:center !important;
+    border:0px solid black !important;
+    border-bottom:2px solid $clbl !important;
+    border-radius:0px !important
+}
+
+i{
+    cursor:pointer;
+    color:$clbl !important;
+}
+
+button{cursor:pointer}
+
+.hidden{visibility:hidden}
