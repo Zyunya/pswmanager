@@ -56057,11 +56057,6 @@ __WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('dashctr', functi
     var login = document.querySelector('input[name=login]');
     var pswrd = document.querySelector('input[name=pswrd]');
 
-    $scope.append_obj = () => {
-        var objectArray = [{ a: 'a', b: 'b', c: 'c', d: 'd' }, { a: 'a', b: new Date().getSeconds() }, { a: 'a' }, { a: 'a', b: 'b', c: 'c' }];
-        objectArray.sort(function (A, B) { return Object.keys(A).length > Object.keys(B).length; })
-        console.log(objectArray)
-    }
 
     $scope.add_app = () => {
 
