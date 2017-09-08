@@ -55,6 +55,15 @@ psw.config(($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider
         })
 })
 
+////////////////////////FIlTERS////////////////////////////
+
+psw.filter('validate',()=>{
+    return (x)=>{
+        if(x.match('<|>|!|/|\/|/|\'|%|\"|{|}|\,')) return false
+        else return true
+    }
+}
+)
 
 
 

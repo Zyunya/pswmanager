@@ -69,8 +69,8 @@ app.use(bodyParser.json());
 
 app.post('/signup', (req, res) => {
 
-    var login = req.body.login;
-    var password = req.body.password;
+    var login = req.body.login.replace(/[<|>|!|/|\/|/|\'|%|\"|{|}|\,]/g,"");
+    var password = req.body.password.replace(/[<|>|!|/|\/|/|\'|%|\"|{|}|\,]/g,"");
 
     var user = new User({
         login: login,
@@ -94,8 +94,8 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/signin', (req, res) => {
-    var login = req.body.login;
-    var pswrd = req.body.password;
+    var login = req.body.login.replace(/[<|>|!|/|\/|/|\'|%|\"|{|}|\,]/g,"");
+    var pswrd = req.body.password.replace(/[<|>|!|/|\/|/|\'|%|\"|{|}|\,]/g,"");
     User.findOne({ login: req.body.login }, { __id: true, login: true }).select('password').exec((err, result) => {
         if (err) return res.status(500).json({ text: "Error Occurred" });
         if (!result) return res.status(401).json({ text: "Such User Not Founded" })

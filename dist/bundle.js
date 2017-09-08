@@ -9224,6 +9224,15 @@ psw.config(($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider
         })
 })
 
+////////////////////////FIlTERS////////////////////////////
+
+psw.filter('validate',()=>{
+    return (x)=>{
+        if(x.match('<|>|!|/|\/|/|\'|%|\"|{|}|\,')) return false
+        else return true
+    }
+}
+)
 
 
 
@@ -55957,13 +55966,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module_js__ = __webpack_require__(60);
 
 
-__WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('homectr', function ($scope, $state, $timeout, $http) {
+__WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('homectr', function ($scope, $state, $timeout, $http ,$filter) {
 
     $scope.sign_in = () => {
         var alert = document.querySelector('.alert');
         var login = document.querySelector('input[name=login]').value;
         var pswrd = document.querySelector('input[name=pswrd]').value;
-        var outp = document.querySelector('output');
+        var outp  = document.querySelector('output');
+
+         if(!$filter('validate')(login) || !$filter('validate')(pswrd)) 
+         return false,
+         alert.style.visibility = 'visible',
+         outp.value = 'inputs contain restricted symbols';
         $http({
             method: 'POST',
             url: __WEBPACK_IMPORTED_MODULE_0__app_module_js__["baseurl"] + '/signin',
@@ -55995,7 +56009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module_js__ = __webpack_require__(60);
 
 
-__WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('regestrationctr', function ($scope, $state, $timeout, $http) {
+__WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('regestrationctr', function ($scope, $state, $timeout, $http,$filter) {
 
     $scope.show_pass = () => {
         document.querySelectorAll('.pass').forEach((elem) => {
@@ -56008,7 +56022,11 @@ __WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('regestrationctr'
         var pswrd = document.querySelector('input[name=pswrd]').value;
         var pswrdrp = document.querySelector('input[name=pswrdrp]').value;
         var outp = document.querySelector('output');
-
+        
+        if(!$filter('validate')(login) || !$filter('validate')(pswrd) || !$filter('validate')(pswrdrp)) 
+         return false,
+         alert.style.visibility = 'visible',
+         outp.value = 'inputs contain restricted symbols';
         if (pswrd !== pswrdrp)
             return false,
                 alert.style.visibility = 'visible',
@@ -56023,7 +56041,8 @@ __WEBPACK_IMPORTED_MODULE_0__app_module_js__["psw"].controller('regestrationctr'
             outp.value = response.data.text;
             console.log(response.data.text)
         }).catch((err) => {
-            alert.style.visibility = 'visible';
+            if(err.data.text)
+            alert.style.visibility = 'visible',
             outp.value = err.data.text;
         })
     }

@@ -1,6 +1,6 @@
 import { psw, baseurl } from '../app.module.js';
 
-psw.controller('regestrationctr', function ($scope, $state, $timeout, $http) {
+psw.controller('regestrationctr', function ($scope, $state, $timeout, $http,$filter) {
 
     $scope.show_pass = () => {
         document.querySelectorAll('.pass').forEach((elem) => {
@@ -13,7 +13,11 @@ psw.controller('regestrationctr', function ($scope, $state, $timeout, $http) {
         var pswrd = document.querySelector('input[name=pswrd]').value;
         var pswrdrp = document.querySelector('input[name=pswrdrp]').value;
         var outp = document.querySelector('output');
-
+        
+        if(!$filter('validate')(login) || !$filter('validate')(pswrd) || !$filter('validate')(pswrdrp)) 
+         return false,
+         alert.style.visibility = 'visible',
+         outp.value = 'inputs contain restricted symbols';
         if (pswrd !== pswrdrp)
             return false,
                 alert.style.visibility = 'visible',
@@ -28,7 +32,8 @@ psw.controller('regestrationctr', function ($scope, $state, $timeout, $http) {
             outp.value = response.data.text;
             console.log(response.data.text)
         }).catch((err) => {
-            alert.style.visibility = 'visible';
+            if(err.data.text)
+            alert.style.visibility = 'visible',
             outp.value = err.data.text;
         })
     }

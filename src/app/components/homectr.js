@@ -1,12 +1,17 @@
 import { psw, baseurl } from '../app.module.js';
 
-psw.controller('homectr', function ($scope, $state, $timeout, $http) {
+psw.controller('homectr', function ($scope, $state, $timeout, $http ,$filter) {
 
     $scope.sign_in = () => {
         var alert = document.querySelector('.alert');
         var login = document.querySelector('input[name=login]').value;
         var pswrd = document.querySelector('input[name=pswrd]').value;
-        var outp = document.querySelector('output');
+        var outp  = document.querySelector('output');
+
+         if(!$filter('validate')(login) || !$filter('validate')(pswrd)) 
+         return false,
+         alert.style.visibility = 'visible',
+         outp.value = 'inputs contain restricted symbols';
         $http({
             method: 'POST',
             url: baseurl + '/signin',
